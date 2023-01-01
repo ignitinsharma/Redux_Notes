@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { authLogout } from "../Redux/Auth/auth.action";
 
 const Navbar = () => {
+  let styles = { textDecoration: "none", fontWeight: 600 };
   /* Getting login value from initialState and using it */
   const { isLoggedIn } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
@@ -14,19 +15,34 @@ const Navbar = () => {
       // authLogout(dispatch);
 
       /* After thunk */
-      dispatch(authLogout())
+      dispatch(authLogout());
     } else {
       // he wants to login
       navigate("/login");
     }
   };
   return (
-    <div style={{ padding: "10px", display: "flex", gap: "20px" }}>
+    <div
+      style={{
+        padding: "10px",
+        display: "flex",
+        gap: "20px",
+        justifyContent: "space-evenly",
+      }}
+    >
       Navbar:
-      <Link to="">Home</Link>
-      <Link to="/posts">Posts</Link>
-      <Link to="/careers">Careers</Link>
-      <Link to="/feeds">Feeds</Link>
+      <Link style={styles} to="">
+        Home 🏠
+      </Link>
+      <Link style={styles} to="/posts">
+        Posts 📭
+      </Link>
+      <Link style={styles} to="/careers">
+        Careers 🦸‍♂️
+      </Link>
+      <Link style={styles} to="/feeds">
+        Feeds 📚
+      </Link>
       <button onClick={handleLoginClick}>
         {/* Spacer */}
         {isLoggedIn ? "Logout" : "Login"}

@@ -9,11 +9,13 @@ import {
 } from "./auth.types";
 
 /* Second argument only having dispatch  */
-export const authLogin = (cred) => (dispatch) => {
+export const authLogin = (cred) => async(dispatch) => {
+  console.log('cred and dispatch', cred,dispatch);
   dispatch({ type: AUTH_LOGIN_LOADING });
   try {
     /* Sending that cred means that Input value to API  */
-    let data = loginAPI(cred);
+    let data = await loginAPI(cred);
+    console.log('data in action', data);
     dispatch({ type: AUTH_LOGIN_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: AUTH_LOGIN_ERROR });

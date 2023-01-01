@@ -11,8 +11,8 @@ export const getFeedsfun = () => async (dispatch) => {
   try {
     /* Here we are on success phs */
     let data = await axios.get("http://localhost:8080/feeds");
-    dispatch({ type: FEEDS_GET_SUCCESS, payload: data });
-    // console.log(data.data);
+    dispatch({ type: FEEDS_GET_SUCCESS, payload: data.data });
+    //  console.log(data.data);
   } catch (error) {
     dispatch({ type: FEEDS_GET_ERROR });
   }

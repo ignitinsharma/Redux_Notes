@@ -4,7 +4,7 @@ import { authLogin } from "../Redux/Auth/auth.action";
 
 const Login = () => {
   const [loginCreds, setLoginCreds] = useState({});
-  const { isLoggedIn } = useSelector((store) => store.auth.isLoggedIn);
+  const { isLoggedIn } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
 
   const hanldeChange = (e) => {
@@ -17,7 +17,9 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    authLogin(loginCreds, dispatch);
+    // console.log('loginCreds:', loginCreds)
+    // authLogin(loginCreds, dispatch);
+    dispatch(authLogin(loginCreds));
   };
   return (
     <div>
